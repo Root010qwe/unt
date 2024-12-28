@@ -1,57 +1,62 @@
 document.addEventListener("DOMContentLoaded", () => {
   const cardContainer = document.getElementById("card-container");
-  const newCardBtn = document.getElementById("new-card-btn");
-  const modal = document.getElementById("editor-modal");
-  const closeModalBtn = document.getElementById("close-modal-btn");
-  const saveCardBtn = document.getElementById("save-card-btn");
-  const questionInput = document.getElementById("question");
-  const answerInput = document.getElementById("answer");
+  const progress = document.getElementById("progress");
+  const knowBtn = document.getElementById("know-btn");
+  const dontKnowBtn = document.getElementById("dont-know-btn");
 
-  let cards = JSON.parse(localStorage.getItem("flashcards")) || [];
+  let cards = [];
+  let currentIndex = 0;
+  let knownCards = 0;
 
-  const saveCards = () => {
-    localStorage.setItem("flashcards", JSON.stringify(cards));
-  };
-
-  const renderCards = () => {
-    cardContainer.innerHTML = "";
-    cards.forEach((card, index) => {
-      const cardEl = document.createElement("div");
-      cardEl.className = "card";
-      cardEl.innerText = card.question;
-      cardEl.addEventListener("click", () => {
-        if (cardEl.classList.contains("flipped")) {
-          cardEl.innerText = card.question;
-        } else {
-          cardEl.innerText = card.answer;
-        }
-        cardEl.classList.toggle("flipped");
-      });
-      cardContainer.appendChild(cardEl);
+  fetch(jsonFile)
+    .then((response) => response.json())
+    .then((data) => {
+      cards = data;
+      updateProgress();
+      renderCard();
+    })
+    .catch((error) => {
+      console.error("Ошибка загрузки JSON:", error);
     });
-  };
 
-  newCardBtn.addEventListener("click", () => {
-    modal.classList.remove("hidden");
-  });
+  function renderCard() {
+    cardContainer.innerHTML = "";
+    if (currentIndex < cards.length) {
+      const card = document.createElement("div");
+      card.className = "card visible";
+      card.textContent = cards[currentIndex].question;
 
-  closeModalBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
+      card.addEventListener("click", () => {
+        card.textContent =
+          card.textContent === cards[currentIndex].question
+            ? cards[currentIndex].answer
+            : cards[currentIndex].question;
+      });
 
-  saveCardBtn.addEventListener("click", () => {
-    const question = questionInput.value.trim();
-    const answer = answerInput.value.trim();
-
-    if (question && answer) {
-      cards.push({ question, answer });
-      saveCards();
-      renderCards();
-      modal.classList.add("hidden");
-      questionInput.value = "";
-      answerInput.value = "";
+      cardContainer.appendChild(card);
+    } else {
+      cardContainer.innerHTML = "<p>Вы изучили все карточки!</p>";
+      knowBtn.disabled = true;
+      dontKnowBtn.disabled = true;
     }
+  }
+
+  function updateProgress() {
+    const progressValue = Math.round((currentIndex / cards.length) * 100);
+    progress.textContent = progressValue;
+  }
+
+  knowBtn.addEventListener("click", () => {
+    knownCards++;
+    currentIndex++;
+    updateProgress();
+    renderCard();
   });
 
-  renderCards();
+  dontKnowBtn.addEventListener("click", () => {
+    cards.push(cards[currentIndex]); // Повторяем карточку в конце списка
+    currentIndex++;
+    updateProgress();
+    renderCard();
+  });
 });
