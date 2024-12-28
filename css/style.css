@@ -5,76 +5,43 @@ body {
   margin: 0;
   padding: 0;
 }
+
 .container {
   max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 20px auto;
   text-align: center;
 }
+
 h1 {
   margin-bottom: 20px;
 }
+
 .card-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
   justify-content: center;
 }
+
 .card {
   background-color: #1e1e1e;
-  border: 1px solid #333;
-  border-radius: 8px;
-  padding: 15px;
-  width: 200px;
-  height: 150px;
+  width: 150px;
+  height: 200px;
+  border-radius: 10px;
   display: flex;
-  justify-content: center;
   align-items: center;
-  cursor: pointer;
+  justify-content: center;
+  color: #fff;
   text-align: center;
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform 0.3s ease;
 }
+
+.card:hover {
+  transform: scale(1.1);
+}
+
 .card.flipped {
   background-color: #333;
-}
-button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  color: #fff;
-  cursor: pointer;
-}
-button:hover {
-  background-color: #0056b3;
-}
-.modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.modal.hidden {
-  display: none;
-}
-.modal-content {
-  background: #1e1e1e;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
-  text-align: left;
-}
-input {
-  width: 100%;
-  padding: 8px;
-  margin: 10px 0;
-  background: #333;
-  border: none;
-  color: #fff;
-  border-radius: 4px;
 }

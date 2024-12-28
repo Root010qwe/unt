@@ -3,30 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flash Cards</title>
+  <title>Flashcards</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="container">
-    <h1>Flash Cards</h1>
+    <h1>Flashcards</h1>
     <div id="card-container" class="card-container">
-      <!-- Карточки будут добавлены динамически -->
-    </div>
-    <button id="new-card-btn">Добавить карточку</button>
-  </div>
-
-  <div id="editor-modal" class="modal hidden">
-    <div class="modal-content">
-      <h2>Добавить карточку</h2>
-      <label for="question">Вопрос</label>
-      <input type="text" id="question">
-      <label for="answer">Ответ</label>
-      <input type="text" id="answer">
-      <button id="save-card-btn">Сохранить</button>
-      <button id="close-modal-btn">Закрыть</button>
+      <!-- Карточки будут динамически загружены из JSON -->
     </div>
   </div>
-
-  <script src="js/app.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
