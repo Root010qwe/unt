@@ -1,26 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
   const cardContainer = document.getElementById("card-container");
 
-  // Загрузка данных из JSON
-  fetch("data/cards.json")
+  fetch(jsonFile)
     .then((response) => response.json())
-    .then((cards) => {
-      cards.forEach((card) => {
-        const cardElement = document.createElement("div");
-        cardElement.className = "card";
-        cardElement.textContent = card.question;
+    .then((data) => {
+      data.forEach((item) => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.textContent = item.question;
 
         let flipped = false;
 
-        // Обработка клика на карточке
-        cardElement.addEventListener("click", () => {
+        card.addEventListener("click", () => {
           flipped = !flipped;
-          cardElement.textContent = flipped ? card.answer : card.question;
-          cardElement.classList.toggle("flipped", flipped);
+          card.textContent = flipped ? item.answer : item.question;
+          card.classList.toggle("flipped", flipped);
         });
 
-        cardContainer.appendChild(cardElement);
+        cardContainer.appendChild(card);
       });
     })
-    .catch((error) => console.error("Ошибка загрузки данных:", error));
+    .catch((error) => console.error("Error loading cards:", error));
 });

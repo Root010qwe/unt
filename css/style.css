@@ -1,19 +1,38 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #121212;
+  background: #121212;
   color: #fff;
   margin: 0;
   padding: 0;
 }
 
 .container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 20px auto;
   text-align: center;
 }
 
 h1 {
   margin-bottom: 20px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: #fff;
+  background: #007bff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.menu-item:hover {
+  background: #0056b3;
 }
 
 .card-container {
@@ -24,18 +43,16 @@ h1 {
 }
 
 .card {
-  background-color: #1e1e1e;
-  width: 150px;
-  height: 200px;
+  background: #1e1e1e;
   border-radius: 10px;
+  padding: 20px;
+  width: 250px;
+  height: 150px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  color: #fff;
-  text-align: center;
+  align-items: center;
   cursor: pointer;
-  perspective: 1000px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s;
 }
 
 .card:hover {
@@ -43,5 +60,19 @@ h1 {
 }
 
 .card.flipped {
-  background-color: #333;
+  background: #333;
+}
+
+.back-link {
+  margin-top: 20px;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  background: #555;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.back-link:hover {
+  background: #333;
 }
