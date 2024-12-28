@@ -3,27 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ЛР6: Интерактивное обучение</title>
+  <title>ЛР6: Основы сетевых утилит</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>ЛР6: Изучение теории</h1>
-    <div class="progress">
-      <p>Прогресс: <span id="progress">0</span>%</p>
-    </div>
-    <div id="card-container" class="card-container">
-      <!-- Карточки будут загружены динамически -->
-    </div>
+  <header>
+    <h1>ЛР6: Основы сетевых утилит</h1>
+    <a href="index.html" class="back-link">Назад</a>
+  </header>
+  <main>
+    <div id="card-container" class="card-container"></div>
     <div class="controls">
       <button id="know-btn">Знаю</button>
       <button id="dont-know-btn">Не знаю</button>
     </div>
-    <a href="index.html" class="back-link">Назад к выбору лабораторной</a>
-  </div>
+    <div class="stats">
+      <p>Прогресс: <span id="progress">0</span>%</p>
+    </div>
+  </main>
+  <footer>
+    <p>© 2024, ЛР6</p>
+  </footer>
   <script>
-    const jsonFile = "data/lr7.json"; // Для ЛР7 и ЛР8 замените путь
+    const jsonFile = "data/lr7.json";
   </script>
-  <script src="js/enhancedScript.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>

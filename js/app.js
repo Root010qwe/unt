@@ -1,62 +1,60 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const themeToggle = document.getElementById("theme-toggle");
-  const body = document.body;
-
-  themeToggle.addEventListener("click", () => {
-    body.classList.toggle("light-theme");
-    themeToggle.textContent = body.classList.contains("light-theme")
-      ? "Тёмная тема"
-      : "Светлая тема";
-  });
+  const cardContainer = document.getElementById("card-container");
+  const progressElement = document.getElementById("progress");
+  const knowBtn = document.getElementById("know-btn");
+  const dontKnowBtn = document.getElementById("dont-know-btn");
 
   let cards = [];
-  let currentCard = 0;
-  let hardCards = [];
+  let currentCardIndex = 0;
   let completed = 0;
 
   fetch(jsonFile)
     .then((res) => res.json())
     .then((data) => {
       cards = data;
-      document.getElementById("total").textContent = cards.length;
-      loadCard();
-    });
+      renderCard();
+      updateProgress();
+    })
+    .catch((err) => console.error("Ошибка загрузки JSON:", err));
 
-  function loadCard() {
-    const container = document.getElementById("card-container");
-    container.innerHTML = `<div class="card">${cards[currentCard].question}</div>`;
-    const card = container.querySelector(".card");
+  function renderCard() {
+    if (currentCardIndex >= cards.length) {
+      cardContainer.innerHTML = "<p>Вы изучили все карточки!</p>";
+      knowBtn.disabled = true;
+      dontKnowBtn.disabled = true;
+      return;
+    }
+
+    const cardData = cards[currentCardIndex];
+    cardContainer.innerHTML = `
+      <div class="card">
+        ${cardData.question}
+      </div>
+    `;
+
+    const card = document.querySelector(".card");
     card.addEventListener("click", () => {
       card.textContent =
-        card.textContent === cards[currentCard].question
-          ? cards[currentCard].answer
-          : cards[currentCard].question;
+        card.textContent === cardData.question
+          ? cardData.answer
+          : cardData.question;
     });
   }
 
-  document.getElementById("easy-btn").addEventListener("click", () => {
-    completed++;
-    currentCard++;
-    updateStats();
-    if (currentCard < cards.length) loadCard();
-  });
-
-  document.getElementById("hard-btn").addEventListener("click", () => {
-    hardCards.push(cards[currentCard]);
-    completed++;
-    currentCard++;
-    updateStats();
-    if (currentCard < cards.length) loadCard();
-  });
-
-  document.getElementById("retry-hard").addEventListener("click", () => {
-    cards = hardCards;
-    currentCard = 0;
-    hardCards = [];
-    loadCard();
-  });
-
-  function updateStats() {
-    document.getElementById("completed").textContent = completed;
+  function updateProgress() {
+    const progress = Math.round((completed / cards.length) * 100);
+    progressElement.textContent = progress;
   }
+
+  knowBtn.addEventListener("click", () => {
+    completed++;
+    currentCardIndex++;
+    updateProgress();
+    renderCard();
+  });
+
+  dontKnowBtn.addEventListener("click", () => {
+    currentCardIndex++;
+    renderCard();
+  });
 });
