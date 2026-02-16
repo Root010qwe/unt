@@ -1,0 +1,164 @@
+:root {
+  color-scheme: light;
+  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f6f2ea;
+  color: #2e241f;
+}
+
+.app-header {
+  padding: 16px;
+  text-align: center;
+  background: #efe5d2;
+  border-bottom: 1px solid #e0d4bf;
+}
+
+.app-header h1 {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+}
+
+.app-header p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.layout {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+}
+
+.panel {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  border: 1px solid #ebdfcb;
+  margin-bottom: 12px;
+}
+
+.panel h2 {
+  margin: 0 0 10px;
+  font-size: 1rem;
+}
+
+.panel-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grid-two {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.86rem;
+}
+
+.field input {
+  border: 1px solid #d7ccb8;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 0.95rem;
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 280px;
+  overflow: auto;
+  padding-right: 4px;
+}
+
+.item-row {
+  display: grid;
+  grid-template-columns: 1fr 140px 28px;
+  gap: 8px;
+}
+
+.item-row input {
+  border: 1px solid #d7ccb8;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 0.92rem;
+}
+
+.item-row button {
+  border: 0;
+  border-radius: 8px;
+  background: #edd8d8;
+  color: #571f2f;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button {
+  border: 1px solid #d7ccb8;
+  border-radius: 10px;
+  padding: 10px 12px;
+  background: #fff;
+  color: #342721;
+  cursor: pointer;
+}
+
+button.primary {
+  background: #591f2f;
+  color: #f8efe4;
+  border-color: #591f2f;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.actions button {
+  flex: 1;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+canvas {
+  width: min(100%, 420px);
+  aspect-ratio: 1080 / 1920;
+  border-radius: 16px;
+  border: 2px solid #c9bca8;
+  background: #b7a98a;
+}
+
+.hint {
+  text-align: center;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+@media (min-width: 960px) {
+  .layout {
+    grid-template-columns: 460px 1fr;
+    align-items: start;
+  }
+
+  .controls {
+    position: sticky;
+    top: 12px;
+  }
+}
