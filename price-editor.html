@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редактор прайса</title>
+  <link rel="stylesheet" href="css/price-editor.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Редактор прайса для сторис</h1>
+    <p>Загрузи фото, заполни позиции и скачай готовую картинку в том же стиле.</p>
+  </header>
+
+  <main class="layout">
+    <section class="controls" aria-label="Настройки прайса">
+      <div class="panel">
+        <h2>Шаблон</h2>
+        <label class="field">
+          <span>Фон (фото блюда)</span>
+          <input id="bgUpload" type="file" accept="image/*">
+        </label>
+
+        <div class="grid-two">
+          <label class="field">
+            <span>Заголовок</span>
+            <input id="titleText" type="text" value="ПРАЙС">
+          </label>
+          <label class="field">
+            <span>Контакт</span>
+            <input id="contactText" type="text" value="+7 960 439-17-69">
+          </label>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h2>Цветовая гамма</h2>
+        <div class="grid-two">
+          <label class="field">
+            <span>Цвет названий</span>
+            <input id="nameColor" type="color" value="#f7f6f0">
+          </label>
+          <label class="field">
+            <span>Цвет цен</span>
+            <input id="priceColor" type="color" value="#411826">
+          </label>
+          <label class="field">
+            <span>Плашка контакта</span>
+            <input id="badgeColor" type="color" value="#591f2f">
+          </label>
+          <label class="field">
+            <span>Цвет текста контакта</span>
+            <input id="badgeTextColor" type="color" value="#f8efe4">
+          </label>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title-row">
+          <h2>Позиции меню</h2>
+          <button id="addItem" type="button">+ Добавить</button>
+        </div>
+        <div id="itemsContainer" class="items"></div>
+      </div>
+
+      <div class="actions">
+        <button id="downloadImage" type="button" class="primary">Скачать PNG</button>
+        <button id="resetDefaults" type="button">Сбросить шаблон</button>
+      </div>
+    </section>
+
+    <section class="preview" aria-label="Превью прайса">
+      <canvas id="priceCanvas" width="1080" height="1920"></canvas>
+      <p class="hint">Формат: 1080×1920 (сторис). Для GitHub Pages ничего дополнительно ставить не нужно.</p>
+    </section>
+  </main>
+
+  <script src="js/price-editor.js"></script>
+</body>
+</html>
