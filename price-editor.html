@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редактор прайса</title>
+  <link rel="stylesheet" href="css/price-editor.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Финальный редактор прайса</h1>
+    <p>Сделан для телефона: 4 шага → заполнили → скачали PNG для сторис.</p>
+  </header>
+
+  <main class="layout">
+    <section class="controls" aria-label="Панель настроек прайса">
+      <div class="panel">
+        <h2><span class="step">1</span> Контент</h2>
+        <div class="grid-two">
+          <label class="field">
+            <span>Заголовок</span>
+            <input id="titleText" type="text" value="ПРАЙС" placeholder="Например: ПРАЙС">
+          </label>
+          <label class="field">
+            <span>Контакт</span>
+            <input id="contactText" type="text" value="+7 960 439-17-69" placeholder="+7 900 000-00-00">
+          </label>
+        </div>
+
+        <label class="field file-field">
+          <span>Фон (фото блюда)</span>
+          <input id="bgUpload" type="file" accept="image/*">
+        </label>
+      </div>
+
+      <div class="panel">
+        <h2><span class="step">2</span> Цвета</h2>
+        <div class="grid-two">
+          <label class="field">
+            <span>Цвет заголовка</span>
+            <input id="titleColor" type="color" value="#f7f6f0">
+          </label>
+          <label class="field">
+            <span>Цвет названий</span>
+            <input id="nameColor" type="color" value="#f7f6f0">
+          </label>
+          <label class="field">
+            <span>Цвет цен</span>
+            <input id="priceColor" type="color" value="#411826">
+          </label>
+          <label class="field">
+            <span>Плашка контакта</span>
+            <input id="badgeColor" type="color" value="#591f2f">
+          </label>
+          <label class="field">
+            <span>Цвет контакта</span>
+            <input id="badgeTextColor" type="color" value="#f8efe4">
+          </label>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-title-row">
+          <h2><span class="step">3</span> Позиции меню</h2>
+          <button id="addItem" type="button">+ Позиция</button>
+        </div>
+        <p class="panel-help">Левая колонка — название, правая — цена. Цены всегда выравниваются по одной вертикали.</p>
+        <div id="itemsContainer" class="items"></div>
+      </div>
+
+      <div class="panel">
+        <h2><span class="step">4</span> Готово</h2>
+        <div class="actions">
+          <button id="downloadImage" type="button" class="primary">Скачать PNG</button>
+          <button id="resetDefaults" type="button">Сброс</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="preview" aria-label="Превью прайса">
+      <canvas id="priceCanvas" width="1080" height="1920"></canvas>
+      <p class="hint">Размер: 1080×1920. Подходит для сторис и статусов.</p>
+    </section>
+  </main>
+
+  <script src="js/price-editor.js"></script>
+</body>
+</html>
