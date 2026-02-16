@@ -1,25 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Интерактивное обучение</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Конструктор прайса</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #f6f2ea 0%, #efe5d2 100%);
+      color: #2e241f;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    .card {
+      width: min(100%, 460px);
+      background: #fff;
+      border: 1px solid #ebdfcb;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 10px 30px rgba(55, 40, 20, 0.08);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+    }
+
+    p {
+      margin: 0 0 16px;
+      line-height: 1.45;
+    }
+
+    a {
+      display: inline-block;
+      text-decoration: none;
+      background: #591f2f;
+      color: #f8efe4;
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+  </style>
 </head>
 <body>
-  <header>
-    <h1>Добро пожаловать!</h1>
-  </header>
-  <main>
-    <div class="categories">
-      <a href="lr6.html" class="category-card">ЛР6: Основы сетевых утилит</a>
-      <a href="lr7.html" class="category-card">ЛР7: Протоколы и анализаторы</a>
-      <a href="lr8.html" class="category-card">ЛР8: Система доменных имён</a>
-      <a href="price-editor.html" class="category-card">Конструктор прайса для сторис</a>
-    </div>
+
   </main>
-  <footer>
-    <p>© 2024, Учебный портал</p>
-  </footer>
 </body>
 </html>
